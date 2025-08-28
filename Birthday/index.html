@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown Timer</title>
-    <!-- Added link to external transitions CSS file -->
     <link rel="stylesheet" href="transitions.css">
     <style>
         * {
@@ -394,23 +393,15 @@
         </div>
     </div>
 
-    <!-- Added transition overlay elements -->
     <div class="phase-out-overlay" id="phaseOutOverlay"></div>
     <div class="cosmic-portal" id="cosmicPortal"></div>
     <div class="sparkle-burst" id="sparkleBurst"></div>
     <div class="lightning-storm" id="lightningStorm"></div>
     <div class="quantum-ripples" id="quantumRipples"></div>
 
+    <script src="config.js"></script>
     <script>
-        // ========================================
-        // EASY DATE CONFIGURATION - CHANGE THESE VALUES
-        // ========================================
-        const TARGET_MONTH = 12;    // Month (1-12): January=1, February=2, ..., December=12
-        const TARGET_DAY = 17;      // Day of the month (1-31)
-        const TARGET_HOUR = 12;     // Hour (1-12): 1-12
-        const TARGET_MINUTE = 0;    // Minute (0-59)
-        const TARGET_AM_PM = 'AM';  // 'AM' or 'PM'
-        // ========================================
+        // Date configuration is now in config.js
 
         let countdownInterval;
         let videoUploaded = true;
@@ -419,6 +410,9 @@
         let targetDate;
 
         function smoothTransitionToBirthday() {
+            // **GATEKEEPER STEP 1: Grant access before transitioning.**
+            sessionStorage.setItem('accessGranted', 'true');
+            
             const body = document.body;
             const mainContainer = document.getElementById('mainContainer');
             
@@ -614,9 +608,8 @@
 
         function getTargetDate() {
             const now = new Date();
-            const currentYear = now.getFullYear();
             const actualHour = convertTo24Hour(TARGET_HOUR, TARGET_AM_PM);
-            targetDate = new Date(currentYear, TARGET_MONTH - 1, TARGET_DAY, actualHour, TARGET_MINUTE, 0);
+            targetDate = new Date(TARGET_YEAR, TARGET_MONTH - 1, TARGET_DAY, actualHour, TARGET_MINUTE, 0);
             
             return targetDate.getTime();
         }

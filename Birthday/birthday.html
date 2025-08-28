@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="transitions.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+            /* Prevent text selection on the entire page */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        /* Enhanced space background with deeper cosmic colors */
+        .space-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, #0f0f23 0%, #000000 50%, #1a0033 100%);
+            z-index: -5;
+            display: none;
+        }
+
+        /* Added nebula effect layer for more depth */
+        .nebula-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
+            z-index: -4;
+            display: none;
+            animation: nebula-drift 20s ease-in-out infinite;
+        }
+
+        @keyframes nebula-drift {
+            0%, 100% { transform: translateX(0) translateY(0) scale(1); }
+            33% { transform: translateX(10px) translateY(-5px) scale(1.02); }
+            66% { transform: translateX(-5px) translateY(10px) scale(0.98); }
+        }
+
+        .stars-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            display: none;
+        }
+
+        /* Enhanced star animations with different twinkle patterns */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 16px rgba(255, 158, 11, 0.8);
+        }
+
+        .star.small {
+            width: 2px;
+            height: 2px;
+            animation: twinkle-small 4s infinite ease-in-out;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 1), 0 0 12px rgba(255, 158, 11, 0.6);
+        }
+
+        .star.medium {
+            width: 3px;
+            height: 3px;
+            animation: twinkle-medium 3s infinite ease-in-out;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 158, 11, 0.8);
+        }
+
+        .star.large {
+            width: 4px;
+            height: 4px;
+            animation: twinkle-large 2s infinite ease-in-out;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 158, 11, 1);
+        }
+
+        @keyframes twinkle-small {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        @keyframes twinkle-medium {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.8); }
+        }
+
+        @keyframes twinkle-large {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(2); }
+        }
+
+        /* More elaborate constellation with shooting star effects */
+        .constellation {
+            position: fixed;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 300px;
+            z-index: -2;
+            display: none;
+            animation: constellation-pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes constellation-pulse {
+            0%, 100% { opacity: 0.7; filter: brightness(1) drop-shadow(0 0 10px #ffd700); }
+            50% { opacity: 1; filter: brightness(1.4) drop-shadow(0 0 20px #ffd700); }
+        }
+
+        .constellation-star {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #ffd700;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #ffd700, 0 0 40px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 215, 0, 0.4);
+            animation: star-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes star-glow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .constellation-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+            opacity: 0.6;
+            animation: line-shimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes line-shimmer {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Added shooting stars for extra magic */
+        .shooting-star {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: #ffd700;
+            border-radius: 50%;
+            z-index: -1;
+            display: none;
+            animation: shoot 3s linear infinite;
+            box-shadow: 0 0 15px #ffd700, 0 0 30px rgba(255, 215, 0, 0.6);
+        }
+
+        @keyframes shoot {
+            0% {
+                transform: translateX(-100px) translateY(-100px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                box-shadow: 0 0 20px #ffd700, -80px -80px 40px rgba(255, 215, 0, 0.5);
+            }
+            90% {
+                opacity: 1;
+                box-shadow: 0 0 20px #ffd700, -80px -80px 40px rgba(255, 215, 0, 0.5);
+            }
+            100% {
+                transform: translateX(100vw) translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Enhanced birthday message with more dramatic effects */
+        .parallax-birthday-message {
+            position: fixed;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4rem;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 
+                0 0 20px #ffd700, 
+                0 0 40px #ffd700, 
+                0 0 60px rgba(255, 215, 0, 0.8),
+                2px 2px 4px rgba(0, 0, 0, 0.5);
+            z-index: 6;
+            display: none;
+            animation: epic-float 8s ease-in-out infinite;
+            text-align: center;
+            letter-spacing: 3px;
+            /* Ensure birthday message is not selectable */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            pointer-events: none;
+        }
+
+        @keyframes epic-float {
+            0%, 100% { 
+                transform: translateX(-50%) translateY(0px) scale(1); 
+                filter: hue-rotate(0deg);
+            }
+            25% { 
+                transform: translateX(-50%) translateY(-15px) scale(1.05); 
+                filter: hue-rotate(10deg);
+            }
+            50% { 
+                transform: translateX(-50%) translateY(-10px) scale(1.02); 
+                filter: hue-rotate(20deg);
+            }
+            75% { 
+                transform: translateX(-50%) translateY(-20px) scale(1.08); 
+                filter: hue-rotate(10deg);
+            }
+        }
+
+        /* Enhanced floating particles around the message */
+        .magic-particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 50%;
+            z-index: 5;
+            display: none;
+            animation: particle-dance 6s ease-in-out infinite;
+            box-shadow: 0 0 10px #ffd700;
+        }
+
+        @keyframes particle-dance {
+            0%, 100% { 
+                transform: translateY(0px) translateX(0px) scale(1);
+                opacity: 0.6;
+            }
+            25% { 
+                transform: translateY(-30px) translateX(20px) scale(1.2);
+                opacity: 1;
+            }
+            50% { 
+                transform: translateY(-20px) translateX(-15px) scale(0.8);
+                opacity: 0.8;
+            }
+            75% { 
+                transform: translateY(-40px) translateX(10px) scale(1.1);
+                opacity: 1;
+            }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #f39c12;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        .confetti:nth-child(odd) { background: #e74c3c; animation-delay: 0.5s; }
+        .confetti:nth-child(3n) { background: #3498db; animation-delay: 1s; }
+        .confetti:nth-child(4n) { background: #2ecc71; animation-delay: 1.5s; }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        /* Card appears flat on space background initially */
+        .container.flat-on-space {
+            transform: rotateX(85deg) translateZ(-50px);
+            transform-origin: bottom center;
+            opacity: 0.9;
+        }
+
+        /* Explosion lifts the card up */
+        .container.explosion-lift {
+            animation: explosion-card-lift 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        /* Card falls back down flat */
+        .container.falling-flat {
+            animation: fall-back-flat 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+        }
+
+        @keyframes explosion-card-lift {
+            0% {
+                transform: rotateX(85deg) translateZ(-50px);
+                opacity: 0.9;
+            }
+            30% {
+                transform: rotateX(45deg) translateY(-100px) translateZ(100px) scale(1.1);
+                opacity: 1;
+            }
+            60% {
+                transform: rotateX(20deg) translateY(-200px) translateZ(200px) scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: rotateX(0deg) translateY(-150px) translateZ(150px) scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fall-back-flat {
+            0% {
+                transform: rotateX(0deg) translateY(-150px) translateZ(150px) scale(1.1);
+                opacity: 1;
+            }
+            70% {
+                transform: rotateX(75deg) translateY(20px) translateZ(-30px) scale(1.05);
+                opacity: 0.95;
+            }
+            85% {
+                transform: rotateX(88deg) translateY(-5px) translateZ(-45px) scale(1.02);
+                opacity: 0.92;
+            }
+            100% {
+                transform: rotateX(85deg) translateY(0px) translateZ(-50px) scale(1);
+                opacity: 0.9;
+            }
+        }
+
+        /* Enhanced container with better cosmic integration */
+        .container.celebration {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border: 3px solid #ffd700;
+            box-shadow: 
+                0 0 40px rgba(255, 215, 0, 0.4),
+                inset 0 0 20px rgba(255, 215, 0, 0.1);
+            animation: container-glow 4s ease-in-out infinite;
+        }
+
+        .container.landing {
+            animation: rubber-bounce-landing 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            transform: translateY(-100vh) scale(0.3);
+        }
+
+        @keyframes rubber-bounce-landing {
+            0% {
+                transform: translateY(-100vh) scale(0.3) rotate(-10deg);
+                opacity: 0.8;
+            }
+            40% {
+                transform: translateY(20px) scale(1.2) rotate(2deg);
+                opacity: 1;
+            }
+            60% {
+                transform: translateY(-10px) scale(0.95) rotate(-1deg);
+            }
+            80% {
+                transform: translateY(5px) scale(1.05) rotate(0.5deg);
+            }
+            90% {
+                transform: translateY(-2px) scale(0.98) rotate(0deg);
+            }
+            100% {
+                transform: translateY(0) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes container-glow {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 40px rgba(255, 215, 0, 0.4),
+                    inset 0 0 20px rgba(255, 215, 0, 0.1);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 60px rgba(255, 215, 0, 0.6),
+                    inset 0 0 30px rgba(255, 215, 0, 0.2);
+            }
+        }
+
+        .title {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+            /* Make title text unselectable */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .title.celebration {
+            color: #ffd700;
+            text-shadow: 0 0 10px #ffd700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            transition: all 0.5s ease;
+            /* Make subtitle text unselectable */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .subtitle.celebration {
+            color: #ffffff;
+        }
+        
+        /* Enhanced video container with cosmic border effects */
+        .video-container {
+            display: none;
+            margin-top: 2rem;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 
+                0 0 50px rgba(255, 215, 0, 0.6),
+                0 0 100px rgba(255, 215, 0, 0.3);
+            border: 4px solid #ffd700;
+            position: relative;
+            z-index: 8;
+            animation: video-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes video-pulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 
+                    0 0 50px rgba(255, 215, 0, 0.6),
+                    0 0 100px rgba(255, 215, 0, 0.3);
+            }
+            50% { 
+                transform: scale(1.02);
+                box-shadow: 
+                    0 0 70px rgba(255, 215, 0, 0.8),
+                    0 0 120px rgba(255, 215, 0, 0.4);
+            }
+        }
+
+        .birthday-video {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        .celebration-message {
+            display: none;
+            font-size: 2rem;
+            color: #ffd700;
+            margin: 1rem 0;
+            animation: pulse 1s infinite;
+            text-shadow: 0 0 10px #ffd700;
+            /* Make celebration message unselectable */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Added mouse trail and hover effects */
+        .mouse-trail {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #ffd700, transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0;
+            animation: trail-fade 1s ease-out forwards;
+        }
+
+        @keyframes trail-fade {
+            0% { 
+                opacity: 1; 
+                transform: scale(1);
+                box-shadow: 0 0 20px #ffd700;
+            }
+            100% { 
+                opacity: 0; 
+                transform: scale(0.3);
+                box-shadow: 0 0 5px #ffd700;
+            }
+        }
+
+        .magic-sparkle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: #ffffff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99;
+            opacity: 0;
+            animation: sparkle-burst 0.8s ease-out forwards;
+        }
+
+        @keyframes sparkle-burst {
+            0% { 
+                opacity: 1; 
+                transform: scale(0) rotate(0deg);
+                box-shadow: 0 0 10px #ffffff;
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.5) rotate(180deg);
+                box-shadow: 0 0 15px #ffffff;
+            }
+            100% { 
+                opacity: 0; 
+                transform: scale(0.5) rotate(360deg);
+                box-shadow: 0 0 5px #ffffff;
+            }
+        }
+
+        .cosmic-ripple {
+            position: fixed;
+            border: 2px solid rgba(255, 215, 0, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 98;
+            animation: ripple-expand 1.5s ease-out forwards;
+        }
+
+        @keyframes ripple-expand {
+            0% { 
+                width: 10px; 
+                height: 10px; 
+                opacity: 1;
+                border-width: 3px;
+            }
+            100% { 
+                width: 100px; 
+                height: 100px; 
+                opacity: 0;
+                border-width: 1px;
+            }
+        }
+
+        /* Space ripple effects */
+        .space-ripple {
+            position: fixed;
+            border: 2px solid rgba(255, 215, 0, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .space-ripple.ripple-1 {
+            animation: space-ripple-expand 2s ease-out forwards;
+            animation-delay: 0s;
+        }
+
+        .space-ripple.ripple-2 {
+            animation: space-ripple-expand 2.5s ease-out forwards;
+            animation-delay: 0.3s;
+            border-color: rgba(255, 105, 180, 0.5);
+        }
+
+        .space-ripple.ripple-3 {
+            animation: space-ripple-expand 3s ease-out forwards;
+            animation-delay: 0.6s;
+            border-color: rgba(75, 0, 130, 0.4);
+        }
+
+        @keyframes space-ripple-expand {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+                border-width: 3px;
+            }
+            50% {
+                opacity: 0.6;
+                border-width: 2px;
+            }
+            100% {
+                width: 800px;
+                height: 800px;
+                opacity: 0;
+                border-width: 1px;
+            }
+        }
+
+        /* Enhanced hover effects for space background */
+        body:hover .star {
+            animation-duration: 0.5s;
+        }
+
+        body:hover .constellation-star {
+            animation-duration: 1s;
+            transform: scale(1.3);
+        }
+
+        body:hover .shooting-star {
+            animation-duration: 1.5s;
+        }
+
+        /* Enhanced ground ripple effect */
+        .ground-ripple {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 3px solid rgba(255, 215, 0, 0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 5;
+            animation: ground-ripple-expand 1.5s ease-out forwards;
+        }
+
+        @keyframes ground-ripple-expand {
+            0% { 
+                width: 20px; 
+                height: 10px; 
+                opacity: 1;
+                border-width: 4px;
+                border-color: rgba(255, 215, 0, 1);
+                box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            }
+            50% {
+                width: 300px;
+                height: 150px;
+                opacity: 0.6;
+                border-width: 2px;
+                border-color: rgba(255, 215, 0, 0.6);
+                box-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+            }
+            100% { 
+                width: 600px; 
+                height: 300px; 
+                opacity: 0;
+                border-width: 1px;
+                border-color: rgba(255, 215, 0, 0.2);
+                box-shadow: 0 0 60px rgba(255, 215, 0, 0.1);
+            }
+        }
+
+        /* Multiple ripple waves for more dramatic effect */
+        .ground-ripple.wave-2 {
+            animation-delay: 0.3s;
+            border-color: rgba(255, 105, 180, 0.6);
+        }
+
+        .ground-ripple.wave-3 {
+            animation-delay: 0.6s;
+            border-color: rgba(75, 0, 130, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .title { font-size: 2rem; }
+            .container { padding: 2rem 1rem; }
+            .parallax-birthday-message { font-size: 2.5rem; }
+            .constellation { width: 300px; height: 200px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="phase-in-overlay" id="phaseInOverlay"></div>
+
+    <div class="space-background" id="spaceBackground"></div>
+    <div class="nebula-layer" id="nebulaLayer"></div>
+    <div class="stars-layer" id="starsLayer"></div>
+    
+    <div class="constellation" id="constellation">
+        <div class="constellation-star" style="top: 30px; left: 60px;"></div>
+        <div class="constellation-star" style="top: 50px; left: 120px;"></div>
+        <div class="constellation-star" style="top: 80px; left: 180px;"></div>
+        <div class="constellation-star" style="top: 110px; left: 240px;"></div>
+        <div class="constellation-star" style="top: 140px; left: 150px;"></div>
+        <div class="constellation-star" style="top: 170px; left: 90px;"></div>
+        <div class="constellation-star" style="top: 200px; left: 200px;"></div>
+        <div class="constellation-star" style="top: 60px; left: 300px;"></div>
+        <div class="constellation-star" style="top: 120px; left: 40px;"></div>
+        
+        <div class="constellation-line" style="top: 40px; left: 70px; width: 60px; transform: rotate(35deg);"></div>
+        <div class="constellation-line" style="top: 65px; left: 130px; width: 70px; transform: rotate(25deg);"></div>
+        <div class="constellation-line" style="top: 95px; left: 190px; width: 80px; transform: rotate(-20deg);"></div>
+        <div class="constellation-line" style="top: 125px; left: 160px; width: 90px; transform: rotate(-40deg);"></div>
+        <div class="constellation-line" style="top: 155px; left: 100px; width: 110px; transform: rotate(15deg);"></div>
+        <div class="constellation-line" style="top: 185px; left: 140px; width: 70px; transform: rotate(45deg);"></div>
+    </div>
+
+    <div class="shooting-star" id="shootingStar1" style="top: 20%; left: 10%;"></div>
+    <div class="shooting-star" id="shootingStar2" style="top: 40%; left: 80%;"></div>
+    <div class="shooting-star" id="shootingStar3" style="top: 70%; left: 30%;"></div>
+
+    <div class="parallax-birthday-message" id="parallaxMessage">
+        ✨ HAPPY BIRTHDAY ✨
+    </div>
+
+    <div class="magic-particle" id="particle1" style="top: 12%; left: 45%;"></div>
+    <div class="magic-particle" id="particle2" style="top: 15%; left: 55%;"></div>
+    <div class="magic-particle" id="particle3" style="top: 18%; left: 48%;"></div>
+    <div class="magic-particle" id="particle4" style="top: 20%; left: 52%;"></div>
+
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <div class="container" id="mainContainer">
+        <h1 class="title" id="mainTitle">Birthday Celebration</h1>
+        <p class="subtitle" id="mainSubtitle">The special day is here!</p>
+
+        <div class="celebration-message" id="celebrationMessage">
+            🎉 HAPPY BIRTHDAY! 🎉
+        </div>
+
+        <div class="video-container" id="videoContainer">
+            <video class="birthday-video" id="birthdayVideo" loop>
+                <source id="videoSource" src="fornozo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <script>
+        let lastMouseMove = 0;
+
+        function createMouseTrail(x, y) {
+            const trail = document.createElement('div');
+            trail.className = 'mouse-trail';
+            trail.style.left = (x - 4) + 'px';
+            trail.style.top = (y - 4) + 'px';
+            document.body.appendChild(trail);
+            
+            setTimeout(() => {
+                if (trail.parentNode) {
+                    trail.parentNode.removeChild(trail);
+                }
+            }, 1000);
+        }
+
+        function createMagicSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'magic-sparkle';
+            sparkle.style.left = (x + (Math.random() - 0.5) * 30) + 'px';
+            sparkle.style.top = (y + (Math.random() - 0.5) * 30) + 'px';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                if (sparkle.parentNode) {
+                    sparkle.parentNode.removeChild(sparkle);
+                }
+            }, 800);
+        }
+
+        function createCosmicRipple(x, y) {
+            const ripple = document.createElement('div');
+            ripple.className = 'cosmic-ripple';
+            ripple.style.left = (x - 5) + 'px';
+            ripple.style.top = (y - 5) + 'px';
+            document.body.appendChild(ripple);
+            
+            setTimeout(() => {
+                if (ripple.parentNode) {
+                    ripple.parentNode.removeChild(ripple);
+                }
+            }, 1500);
+        }
+
+        document.addEventListener('mousemove', function(e) {
+            const now = Date.now();
+            
+            if (now - lastMouseMove > 50) { // Throttle trail creation
+                createMouseTrail(e.clientX, e.clientY);
+                lastMouseMove = now;
+            }
+            
+            if (Math.random() < 0.1) {
+                createMagicSparkle(e.clientX, e.clientY);
+            }
+        });
+
+        document.addEventListener('click', function(e) {
+            createCosmicRipple(e.clientX, e.clientY);
+            
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createMagicSparkle(e.clientX, e.clientY);
+                }, i * 100);
+            }
+        });
+
+        function createStars() {
+            const starsLayer = document.getElementById('starsLayer');
+            const starCount = 300;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const sizes = ['small', 'medium', 'large'];
+                const weights = [0.7, 0.25, 0.05]; // More small stars, fewer large ones
+                const randomValue = Math.random();
+                let selectedSize = 'small';
+                
+                if (randomValue > weights[0]) {
+                    selectedSize = randomValue > weights[0] + weights[1] ? 'large' : 'medium';
+                }
+                
+                star.classList.add(selectedSize);
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 5 + 's';
+                
+                starsLayer.appendChild(star);
+            }
+        }
+
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confettiContainer');
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confettiContainer.appendChild(confetti);
+            }
+        }
+
+        function showBirthdayCelebration() {
+            document.getElementById('spaceBackground').style.display = 'block';
+            document.getElementById('nebulaLayer').style.display = 'block';
+            document.getElementById('starsLayer').style.display = 'block';
+            document.getElementById('constellation').style.display = 'block';
+            document.getElementById('parallaxMessage').style.display = 'block';
+            
+            document.getElementById('shootingStar1').style.display = 'block';
+            document.getElementById('shootingStar2').style.display = 'block';
+            document.getElementById('shootingStar3').style.display = 'block';
+            
+            document.getElementById('particle1').style.display = 'block';
+            document.getElementById('particle2').style.display = 'block';
+            document.getElementById('particle3').style.display = 'block';
+            document.getElementById('particle4').style.display = 'block';
+            
+            const container = document.getElementById('mainContainer');
+            const title = document.getElementById('mainTitle');
+            const subtitle = document.getElementById('mainSubtitle');
+            
+            container.classList.add('celebration');
+            title.classList.add('celebration');
+            subtitle.classList.add('celebration');
+            
+            title.textContent = '🎂 Happy Birthday! 🎂';
+            subtitle.textContent = 'May your wishes come true among the stars!';
+            
+            document.getElementById('celebrationMessage').style.display = 'block';
+            
+            createConfetti();
+            
+            const videoContainer = document.getElementById('videoContainer');
+            const video = document.getElementById('birthdayVideo');
+            
+            videoContainer.style.display = 'block';
+            
+            setTimeout(() => {
+                video.muted = false;
+                video.play().catch(e => {
+                    console.log('Autoplay with audio prevented by browser policy');
+                    const playButton = document.createElement('div');
+                    playButton.innerHTML = '🎵 Click to Play with Sound 🎵';
+                    playButton.style.cssText = `
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: rgba(255, 215, 0, 0.9);
+                        color: black;
+                        padding: 15px 30px;
+                        border-radius: 10px;
+                        cursor: pointer;
+                        font-weight: bold;
+                        z-index: 1000;
+                        animation: pulse 1s infinite;
+                    `;
+                    videoContainer.style.position = 'relative';
+                    videoContainer.appendChild(playButton);
+                    
+                    playButton.addEventListener('click', () => {
+                        video.muted = false;
+                        video.play();
+                        playButton.remove();
+                    });
+                });
+            }, 1000);
+        }
+
+        function createGroundRipples() {
+            for (let i = 1; i <= 3; i++) {
+                const ripple = document.createElement('div');
+                ripple.className = `ground-ripple wave-${i}`;
+                document.body.appendChild(ripple);
+                
+                setTimeout(() => {
+                    if (ripple.parentNode) {
+                        ripple.parentNode.removeChild(ripple);
+                    }
+                }, 2000);
+            }
+        }
+
+        function startCardExplosionSequence() {
+            const container = document.getElementById('mainContainer');
+            
+            container.classList.add('flat-on-space');
+            
+            setTimeout(() => {
+                container.classList.remove('flat-on-space');
+                container.classList.add('explosion-lift');
+            }, 1000);
+            
+            setTimeout(() => {
+                container.classList.remove('explosion-lift');
+                container.classList.add('falling-flat');
+                
+                createSpaceRipples();
+            }, 4000);
+        }
+
+        function createSpaceRipples() {
+            const container = document.getElementById('mainContainer');
+            const containerRect = container.getBoundingClientRect();
+            const centerX = containerRect.left + containerRect.width / 2;
+            const centerY = containerRect.bottom;
+            
+            for (let i = 1; i <= 3; i++) {
+                const ripple = document.createElement('div');
+                ripple.className = `space-ripple ripple-${i}`;
+                ripple.style.left = (centerX) + 'px';
+                ripple.style.top = (centerY) + 'px';
+                document.body.appendChild(ripple);
+                
+                setTimeout(() => {
+                    if (ripple.parentNode) {
+                        ripple.parentNode.removeChild(ripple);
+                    }
+                }, 3500);
+            }
+        }
+
+        window.addEventListener('load', function() {
+            createStars();
+            showBirthdayCelebration();
+
+            setTimeout(() => {
+                const container = document.getElementById('mainContainer');
+                container.classList.add('landing');
+                
+                setTimeout(() => {
+                    createGroundRipples();
+                }, 800);
+            }, 100);
+
+            startCardExplosionSequence();
+
+            setTimeout(() => {
+                const overlay = document.getElementById('phaseInOverlay');
+                if (overlay) {
+                    overlay.classList.add('fade-in');
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,644 @@
+/* Completely refined magical effects with cosmic space colors and faster timing */
+
+/* Dimensional Portal Effect - Enhanced with cosmic colors */
+.dimensional-portal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #001122 0deg,
+    #4b0082 60deg,
+    #ffd700 120deg,
+    #ff69b4 180deg,
+    #6a0dad 240deg,
+    #ffa500 300deg,
+    #001122 360deg
+  );
+  z-index: 10000;
+  opacity: 0;
+  animation: portal-emergence 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  box-shadow: 0 0 150px rgba(255, 215, 0, 1), inset 0 0 100px rgba(0, 0, 0, 0.7);
+}
+
+@keyframes portal-emergence {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0deg) scale(0);
+    filter: blur(30px) hue-rotate(0deg);
+  }
+  25% {
+    width: 200px;
+    height: 200px;
+    opacity: 0.8;
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.2);
+    filter: blur(15px) hue-rotate(90deg);
+  }
+  50% {
+    width: 600px;
+    height: 600px;
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(360deg) scale(1.5);
+    filter: blur(8px) hue-rotate(180deg);
+  }
+  75% {
+    width: 1200px;
+    height: 1200px;
+    opacity: 0.9;
+    transform: translate(-50%, -50%) rotate(540deg) scale(2);
+    filter: blur(3px) hue-rotate(270deg);
+  }
+  100% {
+    width: 3000px;
+    height: 3000px;
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(720deg) scale(3);
+    filter: blur(0px) hue-rotate(360deg);
+  }
+}
+
+/* Reality Distortion Field - Cosmic nebula colors */
+.reality-distortion {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 25% 25%, rgba(75, 0, 130, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 105, 180, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.3) 0%, transparent 70%),
+    radial-gradient(circle at 80% 20%, rgba(106, 13, 173, 0.3) 0%, transparent 60%);
+  z-index: 9998;
+  opacity: 0;
+  animation: reality-warp 2s ease-in-out forwards;
+  backdrop-filter: blur(0px);
+}
+
+@keyframes reality-warp {
+  0% {
+    opacity: 0;
+    backdrop-filter: blur(0px) hue-rotate(0deg) saturate(1);
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    opacity: 0.6;
+    backdrop-filter: blur(3px) hue-rotate(90deg) saturate(1.5);
+    transform: scale(1.03) rotate(2deg);
+  }
+  50% {
+    opacity: 1;
+    backdrop-filter: blur(8px) hue-rotate(180deg) saturate(2);
+    transform: scale(1.08) rotate(4deg);
+  }
+  75% {
+    opacity: 1;
+    backdrop-filter: blur(12px) hue-rotate(270deg) saturate(2.5);
+    transform: scale(1.12) rotate(6deg);
+  }
+  100% {
+    opacity: 1;
+    backdrop-filter: blur(20px) hue-rotate(360deg) saturate(3);
+    transform: scale(1.15) rotate(0deg);
+  }
+}
+
+/* Cosmic Energy Bursts - Electric neon waves */
+.cosmic-energy-burst {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10001;
+  opacity: 0;
+}
+
+.energy-wave {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 4px solid;
+  border-radius: 50%;
+  animation: energy-burst 2s ease-out forwards;
+}
+
+.energy-wave:nth-child(1) {
+  border-color: #ffd700;
+  animation-delay: 0s;
+  box-shadow: 0 0 50px #ffd700, inset 0 0 20px #ffd700;
+}
+
+.energy-wave:nth-child(2) {
+  border-color: #4b0082;
+  animation-delay: 0.2s;
+  box-shadow: 0 0 50px #4b0082, inset 0 0 20px #4b0082;
+}
+
+.energy-wave:nth-child(3) {
+  border-color: #ff69b4;
+  animation-delay: 0.4s;
+  box-shadow: 0 0 50px #ff69b4, inset 0 0 20px #ff69b4;
+}
+
+.energy-wave:nth-child(4) {
+  border-color: #ffa500;
+  animation-delay: 0.6s;
+  box-shadow: 0 0 50px #ffa500, inset 0 0 20px #ffa500;
+}
+
+.energy-wave:nth-child(5) {
+  border-color: #6a0dad;
+  animation-delay: 0.8s;
+  box-shadow: 0 0 50px #6a0dad, inset 0 0 20px #6a0dad;
+}
+
+@keyframes energy-burst {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    width: 400px;
+    height: 400px;
+    opacity: 0.9;
+    transform: scale(1.3) rotate(180deg);
+  }
+  100% {
+    width: 1500px;
+    height: 1500px;
+    opacity: 0;
+    transform: scale(2) rotate(360deg);
+  }
+}
+
+/* Lightning Bolts - New electric effect */
+.lightning-storm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10005;
+  opacity: 0;
+  animation: storm-intensity 2.5s ease-in-out forwards;
+  pointer-events: none;
+}
+
+.lightning-bolt {
+  position: absolute;
+  width: 4px;
+  height: 100vh;
+  background: linear-gradient(180deg, transparent 0%, #ffd700 20%, #ffffff 50%, #ffd700 80%, transparent 100%);
+  animation: lightning-flash 0.3s ease-in-out infinite;
+  box-shadow: 0 0 20px #ffd700, 0 0 40px #ffd700, 0 0 60px #ffd700;
+}
+
+@keyframes lightning-flash {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(2);
+  }
+}
+
+/* Particle Storm - Enhanced with electric colors */
+.particle-storm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  opacity: 0;
+  animation: storm-intensity 2.5s ease-in-out forwards;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  animation: particle-dance 1.5s infinite ease-in-out;
+}
+
+.particle:nth-child(odd) {
+  background: radial-gradient(circle, #ffd700 0%, transparent 70%);
+  box-shadow: 0 0 10px #ffd700;
+}
+
+.particle:nth-child(even) {
+  background: radial-gradient(circle, #ff69b4 0%, transparent 70%);
+  box-shadow: 0 0 10px #ff69b4;
+}
+
+@keyframes storm-intensity {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes particle-dance {
+  0% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-150px) rotate(180deg) scale(1.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-300px) rotate(360deg) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* Dimensional Rift - Cosmic plasma rift */
+.dimensional-rift {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3px;
+  height: 150px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #ffd700 20%,
+    #ffffff 40%,
+    #4b0082 60%,
+    #ff69b4 80%,
+    transparent 100%
+  );
+  z-index: 10002;
+  opacity: 0;
+  animation: rift-expansion 2s ease-out forwards;
+  box-shadow: 0 0 80px rgba(255, 215, 0, 1), 0 0 160px rgba(255, 105, 180, 0.8);
+}
+
+@keyframes rift-expansion {
+  0% {
+    width: 3px;
+    height: 150px;
+    opacity: 0;
+    transform: translate(-50%, -50%) scaleY(0) rotateZ(0deg);
+  }
+  25% {
+    width: 15px;
+    height: 400px;
+    opacity: 1;
+    transform: translate(-50%, -50%) scaleY(1) rotateZ(22deg);
+  }
+  50% {
+    width: 80px;
+    height: 800px;
+    opacity: 1;
+    transform: translate(-50%, -50%) scaleY(1.3) rotateZ(45deg);
+  }
+  75% {
+    width: 300px;
+    height: 1000px;
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scaleY(1.8) rotateZ(67deg);
+  }
+  100% {
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    transform: translate(-50%, -50%) scaleY(2.5) rotateZ(90deg);
+  }
+}
+
+/* Quantum Ripples - New effect */
+.quantum-ripples {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10006;
+  opacity: 0;
+  animation: quantum-emergence 2s ease-out forwards;
+}
+
+.quantum-ring {
+  position: absolute;
+  border: 2px solid;
+  border-radius: 50%;
+  animation: quantum-expand 1.5s ease-out infinite;
+}
+
+.quantum-ring:nth-child(1) {
+  border-color: #ffd700;
+  animation-delay: 0s;
+}
+
+.quantum-ring:nth-child(2) {
+  border-color: #4b0082;
+  animation-delay: 0.3s;
+}
+
+.quantum-ring:nth-child(3) {
+  border-color: #ff69b4;
+  animation-delay: 0.6s;
+}
+
+@keyframes quantum-emergence {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes quantum-expand {
+  0% {
+    width: 50px;
+    height: 50px;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    width: 800px;
+    height: 800px;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}
+
+/* Time Dilation Effect - Enhanced */
+.time-dilation {
+  animation: temporal-distortion 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes temporal-distortion {
+  0% {
+    transform: scale(1) perspective(1000px) rotateX(0deg) rotateY(0deg);
+    filter: blur(0px) hue-rotate(0deg) brightness(1) saturate(1);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(0.97) perspective(1000px) rotateX(3deg) rotateY(2deg);
+    filter: blur(2px) hue-rotate(90deg) brightness(0.8) saturate(1.5);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(0.92) perspective(1000px) rotateX(8deg) rotateY(5deg);
+    filter: blur(6px) hue-rotate(180deg) brightness(0.5) saturate(2);
+    opacity: 0.6;
+  }
+  75% {
+    transform: scale(0.85) perspective(1000px) rotateX(15deg) rotateY(8deg);
+    filter: blur(15px) hue-rotate(270deg) brightness(0.2) saturate(2.5);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0.7) perspective(1000px) rotateX(25deg) rotateY(15deg);
+    filter: blur(30px) hue-rotate(360deg) brightness(0) saturate(3);
+    opacity: 0;
+  }
+}
+
+/* Cosmic Crescendo - Stellar explosion */
+.cosmic-crescendo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 215, 0, 0.9) 15%,
+    rgba(255, 105, 180, 0.8) 30%,
+    rgba(75, 0, 130, 0.6) 45%,
+    rgba(255, 165, 0, 0.4) 60%,
+    rgba(106, 13, 173, 0.2) 75%,
+    transparent 100%
+  );
+  z-index: 10003;
+  opacity: 0;
+  animation: crescendo-blast 5s ease-out forwards;
+}
+
+@keyframes crescendo-blast {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+    filter: blur(50px) hue-rotate(0deg) saturate(1);
+  }
+  15% {
+    opacity: 0.4;
+    transform: scale(0.3);
+    filter: blur(30px) hue-rotate(60deg) saturate(1.5);
+  }
+  30% {
+    opacity: 0.8;
+    transform: scale(0.8);
+    filter: blur(20px) hue-rotate(120deg) saturate(2);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+    filter: blur(10px) hue-rotate(180deg) saturate(2.5);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.8);
+    filter: blur(5px) hue-rotate(240deg) saturate(3);
+  }
+  85% {
+    opacity: 1;
+    transform: scale(2.5);
+    filter: blur(2px) hue-rotate(300deg) saturate(3.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(4);
+    filter: blur(0px) hue-rotate(360deg) saturate(4);
+  }
+}
+
+/* Magical Transition Message - Cosmic text */
+.magical-message {
+  position: fixed;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: "Arial Black", sans-serif;
+  letter-spacing: 0.1em;
+  z-index: 15000;
+  opacity: 0;
+  display: none;
+  padding: 15px 30px;
+  border-radius: 15px;
+
+  /* Holographic text effect with multiple layers */
+  color: transparent;
+  background: linear-gradient(
+    45deg,
+    #ffd700 0%,
+    #ff69b4 15%,
+    #00ffff 30%,
+    #ffd700 45%,
+    #ff1493 60%,
+    #00ff00 75%,
+    #ffd700 90%,
+    #ff69b4 100%
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* Simplified text shadows for elegance */
+  text-shadow:
+    0 0 8px rgba(255, 215, 0, 0.8),
+    0 0 15px rgba(255, 105, 180, 0.6),
+    0 0 25px rgba(0, 255, 255, 0.4),
+    1px 1px 0px rgba(255, 215, 0, 0.6),
+    2px 2px 0px rgba(255, 105, 180, 0.4),
+    3px 3px 10px rgba(0, 0, 0, 0.6);
+
+  /* Simplified holographic border */
+  border: 2px solid transparent;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    linear-gradient(45deg, #ffd700 0%, #ff69b4 25%, #00ffff 50%, #ff1493 75%, #ffd700 100%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+
+  /* Reduced box shadows for subtlety */
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.6), 0 0 50px rgba(255, 105, 180, 0.4), 0 0 75px rgba(0, 255, 255, 0.3), inset
+    0 0 25px rgba(255, 215, 0, 0.1);
+
+  /* Simplified reveal animation */
+  animation: holographic-materialize 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards, holographic-shift 3s
+    ease-in-out infinite, energy-pulse 2s ease-in-out infinite;
+}
+
+/* Added holographic materialization effect */
+@keyframes holographic-materialize {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.1) rotateX(90deg) rotateY(180deg) rotateZ(45deg);
+    filter: blur(50px) hue-rotate(0deg) brightness(0);
+  }
+  25% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(0.5) rotateX(45deg) rotateY(90deg) rotateZ(22deg);
+    filter: blur(30px) hue-rotate(90deg) brightness(0.5);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(0.8) rotateX(15deg) rotateY(30deg) rotateZ(8deg);
+    filter: blur(15px) hue-rotate(180deg) brightness(1);
+  }
+  75% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1.1) rotateX(5deg) rotateY(10deg) rotateZ(2deg);
+    filter: blur(5px) hue-rotate(270deg) brightness(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    filter: blur(0px) hue-rotate(360deg) brightness(2);
+  }
+}
+
+/* Added dynamic holographic color shifting */
+@keyframes holographic-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg) saturate(2);
+  }
+  25% {
+    background-position: 100% 25%;
+    filter: hue-rotate(90deg) saturate(2.5);
+  }
+  50% {
+    background-position: 200% 75%;
+    filter: hue-rotate(180deg) saturate(3);
+  }
+  75% {
+    background-position: 300% 25%;
+    filter: hue-rotate(270deg) saturate(2.5);
+  }
+}
+
+/* Simplified energy pulsing effect */
+@keyframes energy-pulse {
+  0%,
+  100% {
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.8), 0 0 15px rgba(255, 105, 180, 0.6), 0 0 25px rgba(0, 255, 255, 0.4);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.6), 0 0 50px rgba(255, 105, 180, 0.4), 0 0 75px rgba(0, 255, 255, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 12px rgba(255, 215, 0, 1), 0 0 25px rgba(255, 105, 180, 0.8), 0 0 40px rgba(0, 255, 255, 0.6);
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 0 80px rgba(255, 105, 180, 0.6), 0 0 120px rgba(0, 255, 255, 0.4);
+  }
+}
+
+/* Simplified particle effects around the text */
+.magical-message::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.6) 1px, transparent 1px),
+    radial-gradient(circle at 80% 30%, rgba(255, 105, 180, 0.6) 1px, transparent 1px),
+    radial-gradient(circle at 40% 80%, rgba(0, 255, 255, 0.6) 1px, transparent 1px);
+  background-size: 30px 30px, 25px 25px, 35px 35px;
+  animation: particle-dance 4s ease-in-out infinite;
+  border-radius: 15px;
+  z-index: -1;
+}
+
+/* Phase-in effect for birthday page */
+.phase-in-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes phase-in-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
